@@ -7,8 +7,6 @@ const Submit = () => {
     <button
       className='submit'
       type='submit'
-      
-      
       >Submit</button>
   )
 }
