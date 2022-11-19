@@ -2,7 +2,7 @@ import "./App.css";
 import ShowLK from "./Components/ShowLK";
 import ShowRL from "./Components/ShowRL";
 import React, { Suspense } from "react";
-import { useGLTF, OrbitControls } from "@react-three/drei";
+import { useGLTF, OrbitControls,Instance, Instances } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import ButtonLK from "./Components/ButtonLK";
 import ButtonRL from "./Components/ButtonRL";
@@ -35,18 +35,19 @@ function App() {
       
 
      
-      <Canvas camera={{ position: [100, 400, 200], fov: 0.5 }}>    
-           
+      <Canvas camera={{ position: [100, 400, 200], fov: 50 }}>    
+      
+
             <ambientLight intensity={0.4} />
             <directionalLight
                 intensity={2}
                 color="white"
                 position={[0, 2, 4]}
             />
-<mesh visible userData={{ hello: 'world' }} position={[1, 2, 3]} rotation={[Math.PI / 2, 0, 0]}>
-  <sphereGeometry args={[1, 16, 16]} />
-  <meshStandardMaterial color="hotpink" transparent />
-</mesh>
+    <mesh visible userData={{ hello: 'world' }} position={[1, 2, 3]} rotation={[Math.PI / 2, 0, 0]}>
+      <sphereGeometry args={[1, 16, 16]} />
+      <meshStandardMaterial color="hotpink" transparent />
+    </mesh>
 
             <Suspense fallback={null}>
             <ShowRL />
