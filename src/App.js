@@ -49,11 +49,14 @@ function App() {
       <meshStandardMaterial color="hotpink" transparent />
     </mesh>
 
+
+
             <Suspense fallback={null}>
             <ShowRL />
             <ShowLK />
-            <OrbitControls />
+            <OrbitControls  />
           </Suspense>
+        <gridHelper  args={[270, 18, "blue", "hotpink"]} />
         </Canvas>
       </div>
 
