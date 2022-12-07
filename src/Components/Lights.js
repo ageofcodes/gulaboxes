@@ -1,8 +1,14 @@
 import React from 'react'
 
+
 const Lights = () => {
-  return (
-         <pointLight position={[10, 10, 10]} intensity={1.3} />
+  return (<>
+    <ambientLight intensity={0.4} />
+    <directionalLight
+        intensity={2}
+        color="white"
+        position={[0, 2, 4]}
+    /></>
 
   )
 }

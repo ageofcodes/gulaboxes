@@ -6,7 +6,7 @@ const ButtonRL = ({nameRL, box, setBox}) => {
   return (
   <input
         className='buttonBoxes'
-        type='text'
+        type='number'
         placeholder={nameRL}
 
       />
