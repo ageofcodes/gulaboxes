@@ -5,7 +5,7 @@ import ShowRL from "./ShowRL";
 const Boxes = () => {
   return (
 <>
-    <ShowRL />
+    <ShowRL  />
     <ShowLK />
 </>
   )
