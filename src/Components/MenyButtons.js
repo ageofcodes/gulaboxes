@@ -1,29 +1,21 @@
 import React from 'react'
 import ButtonLK from "./ButtonLK";
 import ButtonRL from "./ButtonRL";
-import Submit from "./Submit";
-import { useState } from "react";
 
-const MenyButtons = () => {
-    const [LK, setLK] = useState(0);
-    const nameLK = "LK";
-    const [RK, setRK] = useState(0);
-    const nameRL = "RL";
-
+const MenyButtons = ({LK, setLK, nameLK, RL, setRL, nameRL}) => {
   return (
     <div className="manuwrapper">
       <ButtonLK
-        nameLK={nameLK}
         LK={LK}
         setLK={setLK}
-      />
+        nameLK={nameLK}
+     />
       <ButtonRL 
+        RL={RL}
+        setRL={setRL}
         nameRL={nameRL}
-        RL={RK}
-        setRL={setRK}
-      />
-      <Submit />
-      </div>
+     />
+    </div>
   )
 }
 
