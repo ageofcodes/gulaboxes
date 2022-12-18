@@ -44,11 +44,6 @@ const Boxes = ({LK, setLK, RL, setRL}) => {
   const showBoxes = [];
     for (let i = 0; i < RL; i++) {
       let nextRowVar = Math.min(startValueRowA, startValueRowB, startValueRowC);
-      /*
-      console.log("isStackedA", isStackedA, "isStackedB", isStackedB, 
-      "isStackedC", isStackedC,"startValueRowA", startValueRowA,"startValueRowB", 
-      startValueRowB,"startValueRowC", startValueRowC, "nextRowVar efter check:", nextRowVar, "RL", RL);
-*/
       if (!isStackedA) {
         showBoxes.push(
           <ShowRL 
@@ -57,7 +52,6 @@ const Boxes = ({LK, setLK, RL, setRL}) => {
             z={startValueRowA-sizeRL}
           /> 
         );
-          console.log("Här är rad A stacked", nextRowVar);
           isStackedA = true
       } else if (!isStackedB) {
         showBoxes.push(
@@ -67,7 +61,6 @@ const Boxes = ({LK, setLK, RL, setRL}) => {
             z={startValueRowB-sizeRL}
           />
         );  
-          console.log("Här är rad B, stacked", nextRowVar);
           isStackedB = true
       } else if (!isStackedC) {
         showBoxes.push(
@@ -77,7 +70,6 @@ const Boxes = ({LK, setLK, RL, setRL}) => {
             z={startValueRowC-sizeRL}
           /> 
         );  
-          console.log("Här är rad C, stacked", nextRowVar);
           isStackedC = true
       } else {
         if (nextRowVar === startValueRowA) {
@@ -99,7 +91,6 @@ const Boxes = ({LK, setLK, RL, setRL}) => {
             /> 
           ); 
             startValueRowB += sizeRL 
-            console.log("Här är rad B", nextRowVar);
             isStackedB = false
       } else if (nextRowVar === startValueRowC) {
           showBoxes.push(
@@ -110,26 +101,18 @@ const Boxes = ({LK, setLK, RL, setRL}) => {
             /> 
           ); 
             startValueRowC += sizeRL 
-            console.log("Här är rad C", nextRowVar);
             isStackedC = false
       }
     }
-    }
+  }
 startValueRowA += -18
 startValueRowB += -18
 startValueRowC += -18
 isStackedA = true
 isStackedB = true
 isStackedC = true
-
-
     for (let i = 0; i < LK; i++) {
       let nextRowVar = Math.min(startValueRowA, startValueRowB, startValueRowC);
-      /*
-      console.log("isStackedA", isStackedA, "isStackedB", isStackedB, 
-      "isStackedC", isStackedC,"startValueRowA", startValueRowA,"startValueRowB", 
-      startValueRowB,"startValueRowC", startValueRowC, "nextRowVar efter check:", nextRowVar, "LK", LK);
-*/
       if (!isStackedA) {
         showBoxes.push(
           <ShowLK 
@@ -138,7 +121,6 @@ isStackedC = true
             z={startValueRowA-sizeLK}
           /> 
         );
-          console.log("Här är rad A stacked", nextRowVar);
           isStackedA = true
       } else if (!isStackedB) {
         showBoxes.push(
@@ -148,7 +130,6 @@ isStackedC = true
             z={startValueRowB-sizeLK}
           />
         );  
-          console.log("Här är rad B, stacked", nextRowVar);
           isStackedB = true
       } else if (!isStackedC) {
         showBoxes.push(
@@ -158,7 +139,6 @@ isStackedC = true
             z={startValueRowC-sizeLK}
           /> 
         );  
-          console.log("Här är rad C, stacked", nextRowVar);
           isStackedC = true
       } else {
         if (nextRowVar === startValueRowA) {
@@ -180,7 +160,6 @@ isStackedC = true
             /> 
           ); 
             startValueRowB += sizeLK 
-            console.log("Här är rad B", nextRowVar);
             isStackedB = false
       } else if (nextRowVar === startValueRowC) {
           showBoxes.push(
@@ -191,7 +170,6 @@ isStackedC = true
             /> 
           ); 
             startValueRowC += sizeLK 
-            console.log("Här är rad C", nextRowVar);
             isStackedC = false
       }
     }

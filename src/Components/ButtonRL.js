@@ -6,14 +6,22 @@ const ButtonRL = ({nameRL, RL, setRL}) => {
   useEffect(() => {
     console.log(`RL has changed to ${RL}`);
   }, [RL]);
+  const handleChange = (e) => {
+    const newValue = e.target.value;
+    if (newValue > 99) {
+      setRL(80);
+    } else {
+      setRL(newValue);
+    }
+  };
   return (
     <input 
         className='buttonBoxes'
         type='number'
         min="0"
-        max="999"
+        max="80"
         placeholder={nameRL}
-        onChange={(e) => setRL(e.target.value)}
+        onChange={handleChange}
       />
   );
 }
