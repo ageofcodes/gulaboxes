@@ -2,32 +2,15 @@
   text-align: center;
 }
 
-
-
-
-
-
 .manuwrapper {
 padding-top: 10px;
 position: absolute;
 z-index: 1;
 }
 
-
 .buttonBoxes {
   width: 48px;
   height: 48px;
   margin-left: 20px;
   margin-right: 20px;
-
- 
-}
-
-.submit {
-  width: 125px;
-  height: 55px;
-  margin-left: 20px;
-  margin-right: 20px;
-
-  
-}
+ }

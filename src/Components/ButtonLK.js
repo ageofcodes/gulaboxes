@@ -17,14 +17,13 @@ const ButtonLK = ({nameLK, LK, setLK}) => {
   };
 
   return (
-     <input
-        className='buttonBoxes'
-        type='number'
-        min="0"
-        max="80"
-        placeholder={nameLK}
-        onChange={handleChange}
-      />
+    <input
+      className='buttonBoxes'
+      type='number'
+      min="0"
+      max="80"
+      placeholder={nameLK}
+      onChange={handleChange}/>
   );
 }
 

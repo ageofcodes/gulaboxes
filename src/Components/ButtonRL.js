@@ -6,6 +6,7 @@ const ButtonRL = ({nameRL, RL, setRL}) => {
   useEffect(() => {
     console.log(`RL has changed to ${RL}`);
   }, [RL]);
+
   const handleChange = (e) => {
     const newValue = e.target.value;
     if (newValue > 99) {
@@ -14,15 +15,15 @@ const ButtonRL = ({nameRL, RL, setRL}) => {
       setRL(newValue);
     }
   };
+
   return (
     <input 
-        className='buttonBoxes'
-        type='number'
-        min="0"
-        max="80"
-        placeholder={nameRL}
-        onChange={handleChange}
-      />
+      className='buttonBoxes'
+      type='number'
+      min="0"
+      max="80"
+      placeholder={nameRL}
+      onChange={handleChange}/>
   );
 }
 

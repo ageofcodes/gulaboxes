@@ -2,45 +2,21 @@ import React from 'react'
 import ShowLK from "./ShowLK";
 import ShowRL from "./ShowRL";
 
-
-/* 
-Om LK eller RL ändras ska alla tas bort och allt börjas om. 
-
-Kolla LK och RL om det är udda
-Gör en loop som delar ut LK 2 och 2 (stacked) till dess att dom är ute.
-En rad A en B och en C. Välj A eller den som är kortast.
-Därefter skjut upp A, B eller C variabeln till ny startpunkt.
-Gör sedan samma med RL.
-Därefter placera ut dom 2 udda om det finns.
-
-
-*/
-
-/*
-  let checkStackA = isStackedA
-  let checkStackB = isStackedB
-  let checkStackC = isStackedC
-*/
-const Boxes = ({LK, setLK, RL, setRL}) => {
+const Boxes = ({LK, RL}) => {
   const sideRight = (-27)
   const sideMiddle = (-9)
   const sideLeft = (9)
   const forwardStart = (-36)
   const ground = (0)
   const stacked = (16.83)
-  const restLK = (LK%2)
-  const restRL = (RL%2)
   const sizeLK = (27)
   const sizeRL = (45)
-
   let startValueRowA = forwardStart
   let startValueRowB = forwardStart
   let startValueRowC = forwardStart
-
   let isStackedA = true
   let isStackedB = true
   let isStackedC = true
-
   const showBoxes = [];
     for (let i = 0; i < RL; i++) {
       let nextRowVar = Math.min(startValueRowA, startValueRowB, startValueRowC);
@@ -82,7 +58,7 @@ const Boxes = ({LK, setLK, RL, setRL}) => {
           );
             startValueRowA += sizeRL 
             isStackedA = false
-      } else if (nextRowVar === startValueRowB) {
+        } else if (nextRowVar === startValueRowB) {
           showBoxes.push(
             <ShowRL 
               x={sideMiddle}
@@ -92,7 +68,7 @@ const Boxes = ({LK, setLK, RL, setRL}) => {
           ); 
             startValueRowB += sizeRL 
             isStackedB = false
-      } else if (nextRowVar === startValueRowC) {
+        } else if (nextRowVar === startValueRowC) {
           showBoxes.push(
             <ShowRL 
               x={sideLeft}
@@ -102,15 +78,15 @@ const Boxes = ({LK, setLK, RL, setRL}) => {
           ); 
             startValueRowC += sizeRL 
             isStackedC = false
+        }
       }
     }
-  }
-startValueRowA += -18
-startValueRowB += -18
-startValueRowC += -18
-isStackedA = true
-isStackedB = true
-isStackedC = true
+    startValueRowA += -18
+    startValueRowB += -18
+    startValueRowC += -18
+    isStackedA = true
+    isStackedB = true
+    isStackedC = true
     for (let i = 0; i < LK; i++) {
       let nextRowVar = Math.min(startValueRowA, startValueRowB, startValueRowC);
       if (!isStackedA) {
@@ -173,17 +149,11 @@ isStackedC = true
             isStackedC = false
       }
     }
-
-     
-
-
-
-
   }
 
   return (
     <>
-    {showBoxes}
+      {showBoxes}
     </>
   )
 }

@@ -8,13 +8,11 @@ const MenyButtons = ({LK, setLK, nameLK, RL, setRL, nameRL}) => {
       <ButtonLK
         LK={LK}
         setLK={setLK}
-        nameLK={nameLK}
-     />
+        nameLK={nameLK}/>
       <ButtonRL 
         RL={RL}
         setRL={setRL}
-        nameRL={nameRL}
-     />
+        nameRL={nameRL}/>
     </div>
   )
 }
