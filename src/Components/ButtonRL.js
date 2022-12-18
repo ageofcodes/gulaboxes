@@ -9,8 +9,8 @@ const ButtonRL = ({nameRL, RL, setRL}) => {
 
   const handleChange = (e) => {
     const newValue = e.target.value;
-    if (newValue > 99) {
-      setRL(80);
+    if (newValue > 20) {
+      setRL(20);
     } else {
       setRL(newValue);
     }
@@ -21,7 +21,7 @@ const ButtonRL = ({nameRL, RL, setRL}) => {
       className='buttonBoxes'
       type='number'
       min="0"
-      max="80"
+      max="20"
       placeholder={nameRL}
       onChange={handleChange}/>
   );

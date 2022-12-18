@@ -8,7 +8,7 @@ const Truck = () => {
         attach="geometry" 
         args={[54, 1, 162]} />
       <meshBasicMaterial 
-        color="black" />
+        color="#4D516D"  />
     </mesh>
   )
 }

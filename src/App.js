@@ -34,7 +34,7 @@ function App() {
           <Truck />
           <OrbitControls  />
         </Suspense>
-        <gridHelper  args={[270, 30, "blue", "hotpink"]} />
+        {/*  <gridHelper  args={[270, 30, "blue", "hotpink"]} /> */}
        </Canvas>
       </div>
     </div>

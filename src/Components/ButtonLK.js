@@ -9,8 +9,8 @@ const ButtonLK = ({nameLK, LK, setLK}) => {
   
   const handleChange = (e) => {
     const newValue = e.target.value;
-    if (newValue > 99) {
-      setLK(80);
+    if (newValue > 36) {
+      setLK(36);
     } else {
       setLK(newValue);
     }
@@ -21,7 +21,7 @@ const ButtonLK = ({nameLK, LK, setLK}) => {
       className='buttonBoxes'
       type='number'
       min="0"
-      max="80"
+      max="36"
       placeholder={nameLK}
       onChange={handleChange}/>
   );
