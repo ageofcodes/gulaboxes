@@ -23,7 +23,7 @@ function App() {
           RL={RL}
           setRL={setRL}
           nameRL={nameRL}/>
-       <Canvas camera={{ position: [100, 400, 200], fov: 50 }}>    
+       <Canvas camera={{ position: [250, 250, 250], fov: 35 }}>    
           <Lights />
           <Suspense fallback={null}>
           <Boxes
