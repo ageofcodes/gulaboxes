@@ -14,6 +14,9 @@ function App() {
   const [RL, setRL] = useState(0);
   const nameRL = "RL";
 
+
+
+
   return (
     <div className="App">
       <div style={{ height: "100vh", backgroundColor: "#E9F1F7" }}>
@@ -30,7 +33,9 @@ function App() {
           <Suspense fallback={null}>
             <Boxes
             LK={LK}
+            setLK={setLK}
             RL={RL}
+            setRL={setRL}
             />
             <Truck />
             <OrbitControls  />

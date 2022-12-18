@@ -11,6 +11,7 @@ const ButtonRL = ({nameRL, RL, setRL}) => {
         className='buttonBoxes'
         type='number'
         min="0"
+        max="999"
         placeholder={nameRL}
         onChange={(e) => setRL(e.target.value)}
       />
