@@ -18,7 +18,19 @@ const Boxes = ({LK, RL}) => {
   let isStackedB = true
   let isStackedC = true
   const showBoxes = [];
-    for (let i = 0; i < RL; i++) {
+  
+
+  let oneMoreRL = false;
+  let RLamount = RL
+  if (RL % 2 === 1) {
+    oneMoreRL = true;
+    RLamount -= 1
+} else if (RL % 2 === 0) {
+    oneMoreRL = false;
+}
+
+
+    for (let i = 0; i < RLamount; i++) {
       let nextRowVar = Math.min(startValueRowA, startValueRowB, startValueRowC);
       if (!isStackedA) {
         showBoxes.push(
@@ -150,6 +162,47 @@ const Boxes = ({LK, RL}) => {
       }
     }
   }
+    startValueRowA -= -18
+    startValueRowB -= -18
+    startValueRowC -= -18
+    if (oneMoreRL) {
+      // do something else if oneMoreRL is set to true eg. place one more
+      let nextRowVar = Math.min(startValueRowA, startValueRowB, startValueRowC);
+         isStackedC = true
+        if (nextRowVar === startValueRowA) {
+          showBoxes.push(
+            <ShowRL 
+              x={sideRight}
+              y={ground}
+              z={startValueRowA}
+            /> 
+          );
+            startValueRowA += sizeRL 
+            isStackedA = false
+        } else if (nextRowVar === startValueRowB) {
+          showBoxes.push(
+            <ShowRL 
+              x={sideMiddle}
+              y={ground}
+              z={startValueRowB}
+            /> 
+          ); 
+            startValueRowB += sizeRL 
+            isStackedB = false
+        } else if (nextRowVar === startValueRowC) {
+          showBoxes.push(
+            <ShowRL 
+              x={sideLeft}
+              y={ground}
+              z={startValueRowC}
+            /> 
+          ); 
+            startValueRowC += sizeRL 
+            isStackedC = false
+        }
+      }
+    
+ 
 
   return (
     <>
