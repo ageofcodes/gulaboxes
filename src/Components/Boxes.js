@@ -170,6 +170,10 @@ if (LK % 2 === 1) {
       }
     }
   }
+
+
+
+
     startValueRowA -= -18
     startValueRowB -= -18
     startValueRowC -= -18
@@ -209,6 +213,11 @@ if (LK % 2 === 1) {
             isStackedC = false
         }
       }
+
+
+
+
+
       startValueRowA += -18
       startValueRowB += -18
       startValueRowC += -18
@@ -241,7 +250,7 @@ if (LK % 2 === 1) {
               isStackedB = false
           } else if (nextRowVar === startValueRowC) {
             showBoxes.push(
-              <ShowRL 
+              <ShowLK 
                 x={sideLeft}
                 y={ground}
                 z={startValueRowC}
