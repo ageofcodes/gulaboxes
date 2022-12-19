@@ -28,6 +28,14 @@ const Boxes = ({LK, RL}) => {
 } else if (RL % 2 === 0) {
     oneMoreRL = false;
 }
+let oneMoreLK = false;
+let LKamount = LK
+if (LK % 2 === 1) {
+  oneMoreLK = true;
+  LKamount -= 1
+} else if (LK % 2 === 0) {
+  oneMoreLK = false;
+}
 
 
     for (let i = 0; i < RLamount; i++) {
@@ -99,7 +107,7 @@ const Boxes = ({LK, RL}) => {
     isStackedA = true
     isStackedB = true
     isStackedC = true
-    for (let i = 0; i < LK; i++) {
+    for (let i = 0; i < LKamount; i++) {
       let nextRowVar = Math.min(startValueRowA, startValueRowB, startValueRowC);
       if (!isStackedA) {
         showBoxes.push(
@@ -201,7 +209,48 @@ const Boxes = ({LK, RL}) => {
             isStackedC = false
         }
       }
-    
+      startValueRowA += -18
+      startValueRowB += -18
+      startValueRowC += -18
+      isStackedA = true
+      isStackedB = true
+      isStackedC = true
+      if (oneMoreLK) {
+        // do something else if oneMoreLK is set to true eg. place one more
+        let nextRowVar = Math.min(startValueRowA, startValueRowB, startValueRowC);
+           isStackedC = true
+          if (nextRowVar === startValueRowA) {
+            showBoxes.push(
+              <ShowLK 
+                x={sideRight}
+                y={ground}
+                z={startValueRowA}
+              /> 
+            );
+              startValueRowA += sizeLK 
+              isStackedA = false
+          } else if (nextRowVar === startValueRowB) {
+            showBoxes.push(
+              <ShowLK
+                x={sideMiddle}
+                y={ground}
+                z={startValueRowB}
+              /> 
+            );
+              startValueRowB += sizeLK 
+              isStackedB = false
+          } else if (nextRowVar === startValueRowC) {
+            showBoxes.push(
+              <ShowRL 
+                x={sideLeft}
+                y={ground}
+                z={startValueRowC}
+              /> 
+            ); 
+              startValueRowC += sizeLK 
+              isStackedC = false
+          }
+        }
  
 
   return (
