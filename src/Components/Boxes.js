@@ -1,8 +1,9 @@
 import React from 'react'
 import ShowLK from "./ShowLK";
 import ShowRL from "./ShowRL";
+import ShowKärl from "./ShowKärl";
 
-const Boxes = ({LK, RL}) => {
+const Boxes = ({LK, RL, Kärl}) => {
   const sideRight = (-27)
   const sideMiddle = (-9)
   const sideLeft = (9)
@@ -11,34 +12,46 @@ const Boxes = ({LK, RL}) => {
   const stacked = (16.83)
   const sizeLK = (27)
   const sizeRL = (45)
+  const sizeKärl = (27)
   let startValueRowA = forwardStart
   let startValueRowB = forwardStart
   let startValueRowC = forwardStart
   let isStackedA = true
   let isStackedB = true
   let isStackedC = true
+
   const showBoxes = [];
   
+    startValueRowA += -18
+    startValueRowB += -18
+    startValueRowC += -18
+
+   
+
+
+
 
   let oneMoreRL = false;
-  let RLamount = RL
+  let RLAmount = RL
   if (RL % 2 === 1) {
     oneMoreRL = true;
-    RLamount -= 1
+    RLAmount -= 1
 } else if (RL % 2 === 0) {
     oneMoreRL = false;
 }
 let oneMoreLK = false;
-let LKamount = LK
+let LKAmount = LK
 if (LK % 2 === 1) {
   oneMoreLK = true;
-  LKamount -= 1
+  LKAmount -= 1
 } else if (LK % 2 === 0) {
   oneMoreLK = false;
 }
+startValueRowA += 18
+startValueRowB += 18
+startValueRowC += 18
 
-
-    for (let i = 0; i < RLamount; i++) {
+    for (let i = 0; i < RLAmount; i++) {
       let nextRowVar = Math.min(startValueRowA, startValueRowB, startValueRowC);
       if (!isStackedA) {
         showBoxes.push(
@@ -107,7 +120,7 @@ if (LK % 2 === 1) {
     isStackedA = true
     isStackedB = true
     isStackedC = true
-    for (let i = 0; i < LKamount; i++) {
+    for (let i = 0; i < LKAmount; i++) {
       let nextRowVar = Math.min(startValueRowA, startValueRowB, startValueRowC);
       if (!isStackedA) {
         showBoxes.push(
@@ -170,10 +183,6 @@ if (LK % 2 === 1) {
       }
     }
   }
-
-
-
-
     startValueRowA -= -18
     startValueRowB -= -18
     startValueRowC -= -18
@@ -198,7 +207,7 @@ if (LK % 2 === 1) {
               y={ground}
               z={startValueRowB}
             /> 
-          ); 
+          );   
             startValueRowB += sizeRL 
             isStackedB = false
         } else if (nextRowVar === startValueRowC) {
@@ -213,27 +222,22 @@ if (LK % 2 === 1) {
             isStackedC = false
         }
       }
-
-
-
-
-
-      startValueRowA += -18
-      startValueRowB += -18
-      startValueRowC += -18
-      isStackedA = true
-      isStackedB = true
+      
+    startValueRowA += -18
+    startValueRowB += -18
+    startValueRowC += -18
+    isStackedA = true
+    isStackedB = true
+    isStackedC = true
+    if (oneMoreLK) {
+      let nextRowVar = Math.min(startValueRowA, startValueRowB, startValueRowC);
       isStackedC = true
-      if (oneMoreLK) {
-        // do something else if oneMoreLK is set to true eg. place one more
-        let nextRowVar = Math.min(startValueRowA, startValueRowB, startValueRowC);
-           isStackedC = true
-          if (nextRowVar === startValueRowA) {
-            showBoxes.push(
-              <ShowLK 
-                x={sideRight}
-                y={ground}
-                z={startValueRowA}
+        if (nextRowVar === startValueRowA) {
+          showBoxes.push(
+            <ShowLK 
+              x={sideRight}
+              y={ground}
+              z={startValueRowA}
               /> 
             );
               startValueRowA += sizeLK 
@@ -259,13 +263,170 @@ if (LK % 2 === 1) {
               startValueRowC += sizeLK 
               isStackedC = false
           }
-        }
+
+  }
  
+  let KäRLAmount = Kärl
+  let nextRowVar = Math.min(startValueRowA, startValueRowB, startValueRowC);
+  let LastKärl = false
+  let SecLastKärl = false
+  for (let i = 0; i < KäRLAmount; i++) {
+    if (i === KäRLAmount-1) {LastKärl = true;}
+    else {LastKärl = false;}
+    if (i === KäRLAmount-2) {SecLastKärl = true;}
+    else {SecLastKärl = false;}
+
+     nextRowVar = Math.min(startValueRowA, startValueRowB, startValueRowC);
+
+    if (LastKärl === true && SecLastKärl === false && (nextRowVar === startValueRowB) && (startValueRowB === startValueRowC)){
+    showBoxes.push(
+      <ShowKärl 
+      x={sideRight+27}
+      y={ground}
+      z={startValueRowB}
+      isRotated={true}
+      /> 
+    );
+    startValueRowC += 18 
+    } else if (LastKärl === true && SecLastKärl === false && (nextRowVar === startValueRowB) && (startValueRowB === startValueRowA)){
+    showBoxes.push(
+      <ShowKärl 
+      x={sideRight}
+      y={ground}
+      z={startValueRowB}
+      isRotated={true}
+      /> 
+    );
+    startValueRowA += 18 
+}  else if (LastKärl === true && SecLastKärl === false && (nextRowVar === startValueRowB) && (startValueRowB === startValueRowC)){
+  showBoxes.push(
+    <ShowKärl 
+    x={sideLeft}
+    y={ground}
+    z={startValueRowB}
+    isRotated={true}
+    /> 
+  );
+  startValueRowC += 18 
+} else if (LastKärl === false && SecLastKärl === true && (nextRowVar === startValueRowB ) && (startValueRowB === startValueRowA) && (startValueRowA === startValueRowC)){
+  showBoxes.push(
+    <ShowKärl 
+    x={sideRight}
+    y={ground}
+    z={startValueRowB}
+    isRotated={true}
+    /> 
+  );
+  } else if (LastKärl === false && SecLastKärl === true && (nextRowVar === startValueRowB ) && (startValueRowB === startValueRowA) && (startValueRowA === startValueRowC)){
+  showBoxes.push(
+    <ShowKärl 
+    x={sideRight}
+    y={ground}
+    z={startValueRowB}
+    isRotated={true}
+    /> 
+  );
+} else if (LastKärl === false && SecLastKärl === true && (nextRowVar === startValueRowB ) && (startValueRowB === startValueRowC) && (startValueRowA === startValueRowC)){
+  showBoxes.push(
+    <ShowKärl 
+    x={sideRight+27}
+    y={ground}
+    z={startValueRowB}
+    isRotated={true}
+    /> 
+  );
+ // basic på sista
+}  else if ((LastKärl === true && SecLastKärl === false)  && nextRowVar === startValueRowA) {
+  showBoxes.push(
+    <ShowKärl 
+      x={sideRight}
+      y={ground}
+      z={startValueRowA}
+    /> 
+  );
+  startValueRowA += sizeKärl  
+} else if ((LastKärl === true && SecLastKärl === false)  && nextRowVar === startValueRowB) {
+  showBoxes.push(
+    <ShowKärl 
+      x={sideMiddle}
+      y={ground}
+      z={startValueRowB}
+    /> 
+  ); 
+  startValueRowB += sizeKärl
+} else if ((LastKärl === true && SecLastKärl === false)  && nextRowVar === startValueRowC) {
+  showBoxes.push(
+    <ShowKärl 
+      x={sideLeft}
+      y={ground}
+      z={startValueRowC}
+    /> 
+  ); 
+  startValueRowC += sizeKärl 
+// basic på näst sista 
+}  else if ((LastKärl === false && SecLastKärl === true)  && nextRowVar === startValueRowA) {
+  showBoxes.push(
+    <ShowKärl 
+      x={sideRight}
+      y={ground}
+      z={startValueRowA}
+    /> 
+  );
+  startValueRowA += sizeKärl
+} else if ((LastKärl === false && SecLastKärl === true)  && nextRowVar === startValueRowB) {
+  showBoxes.push(
+    <ShowKärl 
+      x={sideMiddle}
+      y={ground}
+      z={startValueRowB}
+    /> 
+  ); 
+  startValueRowB += sizeKärl
+} else if ((LastKärl === false && SecLastKärl === true)  && nextRowVar === startValueRowC) {
+  showBoxes.push(
+    <ShowKärl 
+      x={sideLeft}
+      y={ground}
+      z={startValueRowC}
+    /> 
+  ); 
+  startValueRowC += sizeKärl 
+// basic efter här:
+}  else if ((LastKärl === false && SecLastKärl === false)  && nextRowVar === startValueRowA) {
+      showBoxes.push(
+        <ShowKärl 
+          x={sideRight}
+          y={ground}
+          z={startValueRowA}
+        /> 
+      );
+      startValueRowA += sizeKärl
+    } else if ((LastKärl === false && SecLastKärl === false)  && nextRowVar === startValueRowB) {
+      showBoxes.push(
+        <ShowKärl 
+          x={sideMiddle}
+          y={ground}
+          z={startValueRowB}
+        /> 
+      ); 
+      startValueRowB += sizeKärl
+    } else if ((LastKärl === false && SecLastKärl === false)  && nextRowVar === startValueRowC) {
+      showBoxes.push(
+        <ShowKärl 
+          x={sideLeft}
+          y={ground}
+          z={startValueRowC}
+        /> 
+      ); 
+      startValueRowC += sizeKärl 
+    }
+}
 
   return (
     <>
       {showBoxes}
-    </>
+                
+        </>
   )
 }
 

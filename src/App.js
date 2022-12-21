@@ -12,6 +12,8 @@ function App() {
   const nameLK = "LK";
   const [RL, setRL] = useState(0);
   const nameRL = "RL";
+  const [Kärl, setKärl] = useState(0);
+  const nameKärl = "Kärl";
 
   return (
     <div className="App">
@@ -22,7 +24,10 @@ function App() {
           nameLK={nameLK}
           RL={RL}
           setRL={setRL}
-          nameRL={nameRL}/>
+          nameRL={nameRL}
+          Kärl={Kärl}
+          setKärl={setKärl}
+          nameKärl={nameKärl}/>
        <Canvas camera={{ position: [50, 200, 500], fov: 20 }}>    
           <Lights />
           <Suspense fallback={null}>
@@ -30,7 +35,9 @@ function App() {
             LK={LK}
             setLK={setLK}
             RL={RL}
-            setRL={setRL} />
+            setRL={setRL} 
+            Kärl={Kärl}
+            setKärl={setKärl} />
           <Truck />
           <OrbitControls  />
         </Suspense>

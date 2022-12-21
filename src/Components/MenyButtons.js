@@ -1,8 +1,9 @@
 import React from 'react'
 import ButtonLK from "./ButtonLK";
 import ButtonRL from "./ButtonRL";
+import ButtonKärl from "./ButtonKärl";
 
-const MenyButtons = ({LK, setLK, nameLK, RL, setRL, nameRL}) => {
+const MenyButtons = ({LK, setLK, nameLK, RL, setRL, nameRL, Kärl, setKärl, nameKärl}) => {
   return (
     <div className="manuwrapper">
       <ButtonLK
@@ -13,7 +14,12 @@ const MenyButtons = ({LK, setLK, nameLK, RL, setRL, nameRL}) => {
         RL={RL}
         setRL={setRL}
         nameRL={nameRL}/>
+      <ButtonKärl 
+        Kärl={Kärl}
+        setKärl={setKärl}
+        nameKärl={nameKärl}/>
     </div>
+    
   )
 }
 
