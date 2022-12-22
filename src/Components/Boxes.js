@@ -2,8 +2,9 @@ import React from 'react'
 import ShowLK from "./ShowLK";
 import ShowRL from "./ShowRL";
 import ShowKärl from "./ShowKärl";
+import ShowPallLyft from "./ShowPallLyft";
 
-const Boxes = ({LK, RL, Kärl}) => {
+const Boxes = ({LK, RL, Kärl, PallLyft}) => {
   const sideRight = (-27)
   const sideMiddle = (-9)
   const sideLeft = (9)
@@ -25,8 +26,6 @@ const Boxes = ({LK, RL, Kärl}) => {
     startValueRowA += -18
     startValueRowB += -18
     startValueRowC += -18
-
-   
 
 
 
@@ -230,9 +229,9 @@ startValueRowC += 18
     isStackedB = true
     isStackedC = true
     if (oneMoreLK) {
-      let nextRowVar = Math.min(startValueRowA, startValueRowB, startValueRowC);
-      isStackedC = true
-        if (nextRowVar === startValueRowA) {
+        let nextRowVar = Math.min(startValueRowA, startValueRowB, startValueRowC);
+        isStackedC = true
+      if (nextRowVar === startValueRowA) {
           showBoxes.push(
             <ShowLK 
               x={sideRight}
@@ -242,7 +241,7 @@ startValueRowC += 18
             );
               startValueRowA += sizeLK 
               isStackedA = false
-          } else if (nextRowVar === startValueRowB) {
+      } else if (nextRowVar === startValueRowB) {
             showBoxes.push(
               <ShowLK
                 x={sideMiddle}
@@ -252,7 +251,7 @@ startValueRowC += 18
             );
               startValueRowB += sizeLK 
               isStackedB = false
-          } else if (nextRowVar === startValueRowC) {
+      } else if (nextRowVar === startValueRowC) {
             showBoxes.push(
               <ShowLK 
                 x={sideLeft}
@@ -262,14 +261,17 @@ startValueRowC += 18
             ); 
               startValueRowC += sizeLK 
               isStackedC = false
-          }
+      }
 
-  }
+    }
+
+
  
   let KäRLAmount = Kärl
   let nextRowVar = Math.min(startValueRowA, startValueRowB, startValueRowC);
   let LastKärl = false
   let SecLastKärl = false
+  let startValueRowBOccuped = false;
   for (let i = 0; i < KäRLAmount; i++) {
     if (i === KäRLAmount-1) {LastKärl = true;}
     else {LastKärl = false;}
@@ -287,6 +289,7 @@ startValueRowC += 18
       isRotated={true}
       /> 
     );
+    startValueRowBOccuped = true;
     startValueRowC += 18 
     } else if (LastKärl === true && SecLastKärl === false && (nextRowVar === startValueRowB) && (startValueRowB === startValueRowA)){
     showBoxes.push(
@@ -297,6 +300,7 @@ startValueRowC += 18
       isRotated={true}
       /> 
     );
+    startValueRowBOccuped = true;
     startValueRowA += 18 
 }  else if (LastKärl === true && SecLastKärl === false && (nextRowVar === startValueRowB) && (startValueRowB === startValueRowC)){
   showBoxes.push(
@@ -307,6 +311,7 @@ startValueRowC += 18
     isRotated={true}
     /> 
   );
+  startValueRowBOccuped = true;
   startValueRowC += 18 
 } else if (LastKärl === false && SecLastKärl === true && (nextRowVar === startValueRowB ) && (startValueRowB === startValueRowA) && (startValueRowA === startValueRowC)){
   showBoxes.push(
@@ -317,6 +322,8 @@ startValueRowC += 18
     isRotated={true}
     /> 
   );
+  startValueRowBOccuped = true;
+  startValueRowA += sizeKärl 
   } else if (LastKärl === false && SecLastKärl === true && (nextRowVar === startValueRowB ) && (startValueRowB === startValueRowA) && (startValueRowA === startValueRowC)){
   showBoxes.push(
     <ShowKärl 
@@ -326,6 +333,8 @@ startValueRowC += 18
     isRotated={true}
     /> 
   );
+  startValueRowBOccuped = true;
+  startValueRowA += sizeKärl 
 } else if (LastKärl === false && SecLastKärl === true && (nextRowVar === startValueRowB ) && (startValueRowB === startValueRowC) && (startValueRowA === startValueRowC)){
   showBoxes.push(
     <ShowKärl 
@@ -335,6 +344,8 @@ startValueRowC += 18
     isRotated={true}
     /> 
   );
+  startValueRowBOccuped = true;
+  startValueRowA += sizeKärl 
  // basic på sista
 }  else if ((LastKärl === true && SecLastKärl === false)  && nextRowVar === startValueRowA) {
   showBoxes.push(
@@ -421,11 +432,67 @@ startValueRowC += 18
       startValueRowC += sizeKärl 
     }
 }
+if (startValueRowBOccuped){
+  startValueRowB += sizeKärl
+  startValueRowBOccuped = false
+}
+
+
+// Här lägger vi in pallLyft
+
+nextRowVar = Math.min(startValueRowA, startValueRowB, startValueRowC);
+
+if (PallLyft === true && nextRowVar < -30) {
+
+  showBoxes.push(
+    <ShowPallLyft 
+      x={sideLeft}
+      y={ground}
+      z={-42}
+    /> 
+  );
+}
+
+ else if (PallLyft === true && nextRowVar === startValueRowA) {
+showBoxes.push(
+  <ShowPallLyft 
+    x={sideRight}
+    y={ground}
+    z={startValueRowA-15}
+  /> 
+);
+// startValueRowA += sizeKärl
+} else if (PallLyft === true && nextRowVar === startValueRowB) {
+showBoxes.push(
+  <ShowPallLyft 
+    x={sideMiddle}
+    y={ground}
+    z={startValueRowB-15}
+  /> 
+); 
+//  startValueRowB += sizeKärl
+} else if (PallLyft === true && nextRowVar === startValueRowC) {
+showBoxes.push(
+  <ShowPallLyft 
+    x={sideLeft}
+    y={ground}
+    z={startValueRowC-15}
+  /> 
+); 
+//startValueRowC += sizeKärl 
+}
+//slut pallLyft
+
+
+
+
+
+
 
   return (
     <>
       {showBoxes}
-                
+
         </>
   )
 }

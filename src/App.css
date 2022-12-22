@@ -6,6 +6,9 @@
 padding-top: 10px;
 position: absolute;
 z-index: 1;
+display: flex;
+justify-content: flex-start;
+
 }
 
 .buttonBoxes {
@@ -13,4 +16,13 @@ z-index: 1;
   height: 48px;
   margin-left: 20px;
   margin-right: 20px;
+  
+ }
+
+ .buttonCheckBoxes {
+  width: 40px;
+  height: 40px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 7px;
  }
