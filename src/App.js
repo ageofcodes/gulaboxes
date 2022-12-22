@@ -14,6 +14,10 @@ function App() {
   const nameRL = "RL";
   const [Kärl, setKärl] = useState(0);
   const nameKärl = "Kärl";
+  const [PallLyft, setPallLyft] = useState(true)
+  const namePallLyft = "PallLyft";
+
+
 
   return (
     <div className="App">
@@ -27,7 +31,10 @@ function App() {
           nameRL={nameRL}
           Kärl={Kärl}
           setKärl={setKärl}
-          nameKärl={nameKärl}/>
+          nameKärl={nameKärl}
+          PallLyft={PallLyft}
+          setPallLyft={setPallLyft}
+          namePallLyft={namePallLyft}/>
        <Canvas camera={{ position: [50, 200, 500], fov: 20 }}>    
           <Lights />
           <Suspense fallback={null}>
@@ -37,11 +44,13 @@ function App() {
             RL={RL}
             setRL={setRL} 
             Kärl={Kärl}
-            setKärl={setKärl} />
+            setKärl={setKärl} 
+            PallLyft={PallLyft}
+/>
           <Truck />
           <OrbitControls  />
         </Suspense>
-        {/*  <gridHelper  args={[270, 30, "blue", "hotpink"]} /> */}
+        {  <gridHelper  args={[270, 30, "blue", "hotpink"]} /> }
        </Canvas>
       </div>
     </div>
