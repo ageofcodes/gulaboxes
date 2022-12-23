@@ -21,7 +21,7 @@ function App() {
 
   return (
     <div className="App">
-      <div style={{ height: "100vh", backgroundColor: "#E9F1F7" }}>
+      <div style={{ height: "100vh", backgroundColor: "#ffffff" }}>
         <MenyButtons 
           LK={LK}
           setLK={setLK}
