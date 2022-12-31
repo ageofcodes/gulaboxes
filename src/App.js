@@ -7,6 +7,8 @@ import Boxes from "./Components/Boxes";
 import Lights from "./Components/Lights";
 import Truck from "./Components/Truck";
 
+
+
 function App() {
   const [LK, setLK] = useState(0);
   const nameLK = "LK";
@@ -35,8 +37,8 @@ function App() {
           PallLyft={PallLyft}
           setPallLyft={setPallLyft}
           namePallLyft={namePallLyft}/>
-       <Canvas camera={{ position: [50, 200, 500], fov: 20 }}>    
-          <Lights />
+       <Canvas camera={{ position: [30, 50, 120], fov: 75 }}>    
+           <Lights />
           <Suspense fallback={null}>
           <Boxes
             LK={LK}
@@ -48,9 +50,12 @@ function App() {
             PallLyft={PallLyft}
 />
           <Truck />
-          <OrbitControls  />
+          <OrbitControls
+          minDistance={50} 
+          maxDistance={800} 
+          />
         </Suspense>
-        {/*  <gridHelper  args={[270, 30, "blue", "hotpink"]} /> */}
+        {<gridHelper  args={[270, 50, "blue", "hotpink"]} />}
        </Canvas>
       </div>
     </div>
