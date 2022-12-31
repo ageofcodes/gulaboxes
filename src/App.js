@@ -55,7 +55,7 @@ function App() {
           maxDistance={800} 
           />
         </Suspense>
-        {<gridHelper  args={[270, 50, "blue", "hotpink"]} />}
+        {/*<gridHelper  args={[270, 50, "blue", "hotpink"]} />*/}
        </Canvas>
       </div>
     </div>
